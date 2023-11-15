@@ -1,11 +1,19 @@
+import "./ExpenseItems.css";
 function ExpenseItems() {
+  const ExpenseDate = new Date();
+  const Expense = "Food";
+  const Expenseprice = 10;
+  const LocationOfExpenditure = "Basic Needs";
   return (
-    <div>
-      <h3>Expense Items</h3>
-      <h3>Food Rs 10</h3>
-      <h3>Petrol Rs 100</h3>
-      <h3>Movies Rs 200</h3>
+    <div className="expense-item">
+      <div>{ExpenseDate.toString()}</div>
+      <div className="expense-items_description">
+        <h2>{Expense}</h2>
+      </div>
+      <h2>{LocationOfExpenditure}</h2>
+      <div className="expense-item_price">${Expenseprice}</div>
     </div>
   );
 }
+
 export default ExpenseItems;
