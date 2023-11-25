@@ -1,4 +1,4 @@
-import ExpenseItems from "./components/ExpenseItem";
+import ExpenseItems from "./components/expense/ExpenseItem";
 function App() {
   const obj = [
     { LocationOfExpenditure: "basic needs", title: "Food", amount: 10 },
