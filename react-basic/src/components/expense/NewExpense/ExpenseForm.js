@@ -1,12 +1,15 @@
 import React from "react";
 import "./ExpenseForm.css";
 const Expenseform = () => {
+  const ExpenseTitleHandler = (event) => {
+    console.log(event.target.value);
+  };
   return (
     <form>
       <div className="new-expense__controls ">
         <div className="new-expense__control">
           <label>Expense Title</label>
-          <input type="text"></input>
+          <input type="text" onChange={ExpenseTitleHandler}></input>
         </div>
         <div className="new-expense__control">
           <label>Expense Amount</label>
