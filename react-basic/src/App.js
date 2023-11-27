@@ -1,4 +1,6 @@
 import React from "react";
+
+import NewExpenseForm from "./components/expense/NewExpense/NewExpenseForm";
 import ExpenseItems from "./components/expense/ExpenseItem";
 function App() {
   const obj = [
@@ -25,7 +27,7 @@ function App() {
   ];
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpenseForm></NewExpenseForm>
       {obj.map((expense) => {
         return (
           <ExpenseItems
