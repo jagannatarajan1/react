@@ -1,3 +1,4 @@
+import React from "react";
 const ExpenseDetails = (props) => {
   return (
     <div className="expense-item">

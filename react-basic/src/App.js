@@ -1,3 +1,4 @@
+import React from "react";
 import ExpenseItems from "./components/expense/ExpenseItem";
 function App() {
   const obj = [
@@ -5,22 +6,22 @@ function App() {
       id: 1,
       LocationOfExpenditure: "basic needs",
       title: "Food",
-      amount: 10,
+      amount: 1,
     },
     {
       id: 2,
       LocationOfExpenditure: "essential needs",
       title: "Food",
-      amount: 10,
+      amount: 12,
     },
     {
       id: 3,
       LocationOfExpenditure: "not essential needs",
       title: "Food",
-      amount: 10,
+      amount: 13,
     },
-    { id: 4, LocationOfExpenditure: " needs", title: "Food", amount: 10 },
-    { id: 5, LocationOfExpenditure: "no needs", title: "Food", amount: 10 },
+    { id: 4, LocationOfExpenditure: " needs", title: "Food", amount: 14 },
+    { id: 5, LocationOfExpenditure: "no needs", title: "Food", amount: 15 },
   ];
   return (
     <div>
