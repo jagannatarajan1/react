@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
-const Expenseform = () => {
+const Expenseform = (props) => {
   const [Expensetitle, setTitleEntite] = useState("");
   const ExpenseTitleHandler = (event) => {
     setTitleEntite(event.target.value);
-    console.log(Expensetitle);
   };
   const [ExpenseAmount, setAmountEntite] = useState("");
   const ExpenseAmountHandler = (event) => {
     setAmountEntite(event.target.value);
-    console.log(ExpenseAmount);
   };
   const [Date, DateEntite] = useState("");
   const DateHandler = (event) => {
     DateEntite(event.target.value);
-    console.log(Date);
   };
   const Buttonfunction = (event) => {
     event.preventDefault();
@@ -23,22 +20,33 @@ const Expenseform = () => {
       Amount: ExpenseAmount,
       Date: Date,
     };
-    console.log(FormDataObjects);
+    props.onSubmitedDate(FormDataObjects);
+    setTitleEntite("");
+    setAmountEntite("");
+    DateEntite("");
   };
   return (
-    <form onClick={Buttonfunction}>
+    <form onSubmit={Buttonfunction}>
       <div className="new-expense__controls ">
         <div className="new-expense__control">
           <label>Expense Title</label>
-          <input type="text" onChange={ExpenseTitleHandler}></input>
+          <input
+            type="text"
+            value={Expensetitle}
+            onChange={ExpenseTitleHandler}
+          ></input>
         </div>
         <div className="new-expense__control">
           <label>Expense Amount</label>
-          <input type="number" onChange={ExpenseAmountHandler}></input>
+          <input
+            type="number"
+            value={ExpenseAmount}
+            onChange={ExpenseAmountHandler}
+          ></input>
         </div>
         <div className="new-expense__control">
           <label>Date</label>
-          <input type="date" onChange={DateHandler}></input>
+          <input type="date" value={Date} onChange={DateHandler}></input>
         </div>
         <div className="new-expense__actions">
           <button type="submit">Add Expense</button>

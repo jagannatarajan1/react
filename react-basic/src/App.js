@@ -25,9 +25,13 @@ function App() {
     { id: 4, LocationOfExpenditure: " needs", title: "Food", amount: 14 },
     { id: 5, LocationOfExpenditure: "no needs", title: "Food", amount: 15 },
   ];
+  const ExpenseFromNewExpenseForm = (expense) => {
+    console.log(expense);
+    console.log("this is the expense form the list of app js");
+  };
   return (
     <div>
-      <NewExpenseForm></NewExpenseForm>
+      <NewExpenseForm onAddExpense={ExpenseFromNewExpenseForm} />
       {obj.map((expense) => {
         return (
           <ExpenseItems
