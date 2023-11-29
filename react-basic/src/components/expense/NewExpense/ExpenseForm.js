@@ -16,8 +16,17 @@ const Expenseform = () => {
     DateEntite(event.target.value);
     console.log(Date);
   };
+  const Buttonfunction = (event) => {
+    event.preventDefault();
+    let FormDataObjects = {
+      Title: Expensetitle,
+      Amount: ExpenseAmount,
+      Date: Date,
+    };
+    console.log(FormDataObjects);
+  };
   return (
-    <form>
+    <form onClick={Buttonfunction}>
       <div className="new-expense__controls ">
         <div className="new-expense__control">
           <label>Expense Title</label>
