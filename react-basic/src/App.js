@@ -1,7 +1,7 @@
 import React from "react";
 
 import NewExpenseForm from "./components/expense/NewExpense/NewExpenseForm";
-import ExpenseItems from "./components/expense/ExpenseItem";
+import ExpenseDetails from "./components/expense/ExpenseDetails";
 function App() {
   const obj = [
     {
@@ -32,16 +32,7 @@ function App() {
   return (
     <div>
       <NewExpenseForm onAddExpense={ExpenseFromNewExpenseForm} />
-      {obj.map((expense) => {
-        return (
-          <ExpenseItems
-            key={expense.id}
-            LocationOfExpenditure={expense.LocationOfExpenditure}
-            amount={expense.amount}
-            title={expense.title}
-          />
-        );
-      })}
+      <ExpenseDetails items={obj} />
     </div>
   );
 }
