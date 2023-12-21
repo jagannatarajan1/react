@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./AddUserForm.css";
 import Button from "./Button/Button";
 import ErrorTab from "./Ui/ErrorTab";
 const AddUserForm = (props) => {
+  const CollegeName = useRef();
   const [enteredname, setenteredname] = useState("");
   const [enteredage, setenteredage] = useState("");
   const [Error, SetError] = useState();
@@ -17,6 +18,8 @@ const AddUserForm = (props) => {
   };
   const FormSubmit = (event) => {
     event.preventDefault();
+    const Refcollegename = CollegeName.current.value;
+    console.log(Refcollegename);
     if (enteredname.trim().length === 0 || enteredage.trim().length === 0) {
       SetError({
         title: "AN error occur",
@@ -28,7 +31,7 @@ const AddUserForm = (props) => {
       SetError({ title: "Enter the correct age", message: "ENter the Age >0" });
       return;
     }
-    props.ONAddList(enteredname, enteredage);
+    props.ONAddList(enteredname, enteredage, Refcollegename);
     setenteredage("");
     setenteredname("");
   };
@@ -58,6 +61,8 @@ const AddUserForm = (props) => {
             value={enteredage}
             onChange={AgeChangeHandler}
           />
+          <label htmlFor="College_name">College Name</label>
+          <input type="text" id="College_name" ref={CollegeName} />
           <Button type="submit">Add User</Button>
         </div>
       </form>
