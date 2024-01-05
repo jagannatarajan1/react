@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import SellerInterface from "./components/SellerInterface";
+import DisplayOnScreen from "./components/displayOnScreen/displayOnScreen";
 
 function App() {
+  const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+  const [items, setItems] = useState(storedItems);
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
+
+  const EcommerceHandler = (productKey, productPrice, productName) => {
+    setItems((previousUserListProduct) => [
+      ...previousUserListProduct,
+      {
+        ProductId: productKey,
+        ProductPrice: productPrice,
+        ProductName: productName,
+      },
+    ]);
+  };
+
+  const handleDelete = (productId) => {
+    setItems((previousUserListProduct) => {
+      const updatedItems = previousUserListProduct.filter(
+        (item) => item.ProductId !== productId
+      );
+
+      // Remove from local storage as well
+      localStorage.setItem("items", JSON.stringify(updatedItems));
+
+      return updatedItems;
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <SellerInterface AddON={EcommerceHandler} />
+      <DisplayOnScreen products={items} onDelete={handleDelete} />
+    </React.Fragment>
   );
 }
 
