@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SellerInterface from "./components/SellerInterface";
 import DisplayOnScreen from "./components/displayOnScreen/displayOnScreen";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const storedItems = JSON.parse(localStorage.getItem("items")) || [];
@@ -17,18 +18,20 @@ function App() {
         ProductId: productKey,
         ProductPrice: productPrice,
         ProductName: productName,
+        ProductUniqueId: uuidv4(),
       },
     ]);
   };
-
-  const handleDelete = (productId) => {
+  console.log(items);
+  const handleDelete = (ProductUniqueId) => {
     setItems((previousUserListProduct) => {
       const updatedItems = previousUserListProduct.filter(
-        (item) => item.ProductId !== productId
+        (item) => item.ProductUniqueId !== ProductUniqueId
       );
 
       // Remove from local storage as well
       localStorage.setItem("items", JSON.stringify(updatedItems));
+      console.log(updatedItems);
 
       return updatedItems;
     });

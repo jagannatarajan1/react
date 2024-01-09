@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./displayOnScreen.css";
 
 const DisplayOnScreen = (props) => {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -12,19 +13,20 @@ const DisplayOnScreen = (props) => {
     setTotalPrice(totalPrice);
   }, [props.products]);
 
-  const handleDelete = (productId) => {
+  const handleDelete = (ProductUniqueId) => {
     // Filter out the deleted product and update the total price
-    props.onDelete(productId);
+    console.log(props.products);
+    props.onDelete(ProductUniqueId);
   };
 
   return (
     <React.Fragment>
-      <ul>
+      <ul className="listitems">
         <h3>Products</h3>
         {props.products.map((product) => (
-          <li key={product.ProductId}>
+          <li key={product.ProductUniqueId}>
             {product.ProductPrice} - {product.ProductName}
-            <button onClick={() => handleDelete(product.ProductId)}>
+            <button onClick={() => handleDelete(product.ProductUniqueId)}>
               Delete
             </button>
           </li>
